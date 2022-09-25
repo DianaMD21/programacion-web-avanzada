@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="ISO-8859-1">
+    <title>CRUD SPRING BOOT</title>
+</head>
+<body>
+<div th:if="${create}">
+    <form th:action="@{/api/create}"  method="POST">
+        <div></div>
+        <div>
+
+            <div>
+                <label>Nombre</label>
+                <input type="text" th:name="name" />
+            </div>
+            <div>
+                <label>Apellidos</label>
+                <input type="text" th:name="lastname" />
+            </div>
+            <div>
+                <label>Telefono</label>
+                <input type="text" th:name="phone" />
+            </div>
+        </div>
+        <div>
+            <input type="submit" /> <a th:href="@{/api/students}">Regresar</a>
+        </div>
+    </form>
+</div>
+
+
+<div th:if="!${create}">
+    <form th:action="@{/api/update/}+${studentUpdate.id}"  th:method="PUT">
+        <div></div>
+        <div>
+            <div>
+                <label>Id</label>
+                <input type="text" th:name="id" th:value="${studentUpdate.id}" readonly />
+            </div>
+            <div>
+                <label>Nombre</label>
+                <input type="text" th:name="name" th:value="${studentUpdate.name}" />
+            </div>
+            <div>
+                <label>Apellidos</label>
+                <input type="text" th:name="lastname" th:value="${studentUpdate.lastName}" />
+            </div>
+            <div>
+                <label>Telefono</label>
+                <input type="text" th:name="phone" th:value="${studentUpdate.lastName}"/>
+            </div>
+        </div>
+        <div>
+            <input type="submit" /> <a th:href="@{/api/students}">Regresar</a>
+        </div>
+    </form>
+</div>
+
+
+
+
+
+
+</body>
+</html>
