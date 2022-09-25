@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,8 +26,9 @@ public class StudentController {
     }
 
     @GetMapping("/students")
-    public String getAllStudents(Model model) {
-        model.addAttribute("allStudents", studentService.getAllStudents());
+    public String getAllStudents(Model model, HttpSession session) {
+        session.setAttribute("allStudents", studentService.getAllStudents());
+        model.addAttribute("allStudents", session.getAttribute("allStudents"));
         return "/Test/showStudents";
     }
 
