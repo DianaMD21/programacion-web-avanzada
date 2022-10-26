@@ -13,5 +13,5 @@ RUN mkdir /app
 COPY --from=build /home/gradle/src/build/libs/*.jar /app/mi-app-multi-stage.jar
 ENTRYPOINT ["java","-jar","/app/mi-app-multi-stage.jar"]
 
-# sudo docker build -t crud-simple .
-# sudo docker run -p 8080:8080 -d crud-simple
+# sudo docker build -t crud-tarea-1 .
+# sudo docker run -p 8080:8080 -d crud-tarea-1
