@@ -1,17 +1,15 @@
 FROM gradle:7.2.0-jdk17 AS build
 COPY --chown=gradle:gradle . /home/gradle/src
 WORKDIR /home/gradle/src
-RUN gradle bootJar --no-daemon
+RUN gradle build
 
 
 
-FROM eclipse-temurin:17-jre-jammy
-VOLUME /outputs
-ENV PORT=8080
+FROM eclipse-temurin:17-jre-alpine
 EXPOSE 8080
-RUN mkdir /app
-COPY --from=build /home/gradle/src/build/libs/*.jar /app/mi-app-multi-stage.jar
-ENTRYPOINT ["java","-jar","/app/mi-app-multi-stage.jar"]
+VOLUME /springLogOut
+COPY --from=BUILD /home/gradle/src/build/libs/*SNAPSHOT.jar /app.jar
+ENTRYPOINT ["java", "-jar", "app.jar"]
 
-# sudo docker build -t crud-tarea-1 .
-# sudo docker run -p 8080:8080 -d crud-tarea-1
+# sudo docker build -t dianamd21/crud-tarea-1 .
+# sudo docker run -p 80:8080 -d dianamd21/crud-tarea-1

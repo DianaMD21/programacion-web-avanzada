@@ -22,21 +22,21 @@ public class StudentController {
 
     @GetMapping("/home")
     public String home(Model model) {
-        return "/Test/index";
+        return "Test/index";
     }
 
     @GetMapping("/students")
     public String getAllStudents(Model model, HttpSession session) {
         session.setAttribute("allStudents", studentService.getAllStudents());
         model.addAttribute("allStudents", session.getAttribute("allStudents"));
-        return "/Test/showStudents";
+        return "Test/showStudents";
     }
 
     @GetMapping("/add")
     public String addStudent(Model model) {
         //model.addAttribute("students", studentService.getAllStudents());
         model.addAttribute("create",true);
-        return "/Test/showStudent";
+        return "Test/showStudent";
     }
     @GetMapping("/update-student/{id}")
     public String modifyStudent(Model model, @PathVariable(value = "id") Long studentId)
@@ -47,7 +47,7 @@ public class StudentController {
         //model.addAttribute("students", studentService.getAllStudents());
         model.addAttribute("create",false);
         model.addAttribute("studentUpdate",student);
-        return "/Test/showStudent";
+        return "Test/showStudent";
     }
 
     @GetMapping("/find/{id}")
