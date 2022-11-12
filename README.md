@@ -5,3 +5,8 @@ Comandos a utilizar:
 
 
 **sudo docker run -p 80:8080 -d dianamd21/crud-tarea-1**
+
+
+Para hacer el pull:
+
+**docker pull dianamd21/crud-tarea-1**
