@@ -1,5 +1,7 @@
 # programacion-web-avanzada
-Comandos:
+Comandos a utilizar:
 
-docker build -t crud-tarea-1 .
-docker run -p 8080:8080 -d crud-tarea-1
+**sudo docker build -t dianamd21/crud-tarea-1 .**
+
+
+**sudo docker run -p 80:8080 -d dianamd21/crud-tarea-1**
